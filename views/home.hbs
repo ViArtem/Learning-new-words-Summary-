@@ -1,8 +1,18 @@
-<h1>{{word}}</h1>
-<form action="#">
-    <input type="text">
-    <button class="btn waves-effect waves-light " type="submit" name="action">
+{{!-- {{#if words.length}} --}}
+{{#each words}}
+<h1>{{Uawords}}</h1>
+{{/each}}
+<form action="/verify" method="post">
+    <input type="text" name="reply" required>
+    <button class="btn waves-effect waves-light " type="submit" name="review">
     <i class="material-icons right">OK</i>
   </button>
 </form>
+{{#if right}}
+<p class="center-align"></p>
+{{else}}
 <p class="center-align">Спробуй ще</p>
+{{/if}}
+{{!-- {{else}}
+<h1>Словник пустий</h1>
+{{/if}} --}}

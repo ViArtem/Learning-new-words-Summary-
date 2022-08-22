@@ -1,7 +1,8 @@
 const {Schema, model } = require('mongoose')
 const schema = new Schema({
-    Uaword:{
+    Uawords:{
         type: String,
+      
 
     },
     Ukwords:{
