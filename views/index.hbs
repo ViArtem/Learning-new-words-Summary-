@@ -1,1 +1,23 @@
-<h1>Твій словник</h1>
+{{#if todo.length}}
+<div class="wrapper">
+<h1 class="gol">Твій словник</h1>
+<ul class="nn">
+  {{#each todo}}
+  <form action="/delete" method="post">
+  <li class="todo">
+    
+    <div>
+    <span>{{Ukwords}}</span>
+    <span>{{Uawords}}</span>
+    
+     </div>
+      <button class="btn waves-effect waves-light vidst " type="submit" name="del">Del</button>
+       
+  </li>
+  </form>
+  {{/each}}
+</ul>
+{{else}}
+<p>Словник порожній!</p>
+{{/if}}
+</div>

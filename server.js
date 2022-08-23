@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const hbs = require('hbs')
@@ -22,6 +23,7 @@ app.engine("hbs", exphbs.engine(
 ))
 app.set('view engine', 'hbs')
 app.set('views', 'views')
+app.use(express.static(path.join( __dirname,"public")))
 app.use(express.urlencoded({extended: true}))
 app.use(todoRoutes)
 

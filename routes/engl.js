@@ -2,9 +2,11 @@ const{ Router } = require('express')
 const Word = require('../models/Word')
 const router = Router()
 
-router.get('/', (req, res)=>{
+router.get('/', async(req, res)=>{
+    const todo = await Word.find({}).lean()
     res.render('index',{
-        title:"Головна сторінка"
+        title:"Головна сторінка",
+        todo
     })
 })
 router.get('/create', (req, res)=>{
@@ -16,7 +18,8 @@ router.get('/create', (req, res)=>{
 router.get('/home', async(req, res)=>{
  
      const words = await Word.aggregate([{ $sample: { size: 1 } }])    //  .find({}).lean()
-   
+     
+     
     if (Object.keys(words[0]).length <= 3) {
         res.redirect('/home')
     }
@@ -39,19 +42,24 @@ router.post('/create', async(req, res)=>{
     })
    
     await wordk.save()
-    res.redirect('/home')
+    res.redirect('/')
 })
 
-var review
+
 router.post('/verify',async (req, res)=>{
-    review = req.body.reply
+    const review = req.body.reply
     const wordl = await Word.find({Ukwords: review}).lean()
     if (wordl.length) {
         
         res.redirect('/home')
     }else{
         
+        res.render('errors',{
+            title: "Помилка"
+        })
+       
     }
+
 //     const words = new Word({
 //         Ukwords: req.body.reply,
        
@@ -59,5 +67,12 @@ router.post('/verify',async (req, res)=>{
    
 //    await words.save()
 //     res.redirect('/home')
+})
+
+router.post('/delete', async(req, res)=>{
+    await Word.deleteOne()
+   
+    
+    res.redirect('/')
 })
 module.exports = router
