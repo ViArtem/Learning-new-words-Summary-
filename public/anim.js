@@ -3,6 +3,3 @@ document.addEventListener('click', function() {
     var instances = M.Sidenav.init(elems, {});
   });
 
-  var collapsibleElem = document.querySelector('.collapsible');
-  var collapsibleInstance = M.Collapsible.init(collapsibleElem, {});
-        

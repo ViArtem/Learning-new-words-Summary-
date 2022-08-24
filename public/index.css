@@ -135,6 +135,10 @@ body {
     }
 } */
 /*  */
+
+.inputcreate{
+  color: #ffffff;
+}
 @media (max-width:1030px){
   .nn{
     margin-left: 170px;

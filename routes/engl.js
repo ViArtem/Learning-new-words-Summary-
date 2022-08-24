@@ -2,6 +2,18 @@ const{ Router } = require('express')
 const Word = require('../models/Word')
 const router = Router()
 
+function capitalize(str) {
+    let x = "";
+    for (i = 0; i < str.length; i++) {
+    if (str[i - 1] === " " || i === 0) {
+    x += str[i].toUpperCase();
+    } else {
+    x += str[i];
+    }
+    }
+    return x;
+    }
+
 router.get('/', async(req, res)=>{
     const todo = await Word.find({}).lean()
     res.render('index',{
@@ -35,19 +47,20 @@ router.get('/home', async(req, res)=>{
 })
 
 router.post('/create', async(req, res)=>{
+   
     const wordk = new Word({
-        Ukwords: req.body.inuk.toString(),
-        Uawords: req.body.inua.toString(),
+        Ukwords: capitalize(req.body.inuk.toString()),
+        Uawords: capitalize(req.body.inua.toString()),
        
     })
    
     await wordk.save()
-    res.redirect('/')
+    res.redirect('/create')
 })
 
 
 router.post('/verify',async (req, res)=>{
-    const review = req.body.reply
+    const review = capitalize(req.body.reply.toString())
     const wordl = await Word.find({Ukwords: review}).lean()
     if (wordl.length) {
         
