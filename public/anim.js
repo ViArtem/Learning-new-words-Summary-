@@ -3,3 +3,4 @@ document.addEventListener('click', function() {
     var instances = M.Sidenav.init(elems, {});
   });
 
+  

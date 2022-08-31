@@ -135,10 +135,26 @@ body {
     }
 } */
 /*  */
-
+.button{
+  width: 150px;
+  height: 70px;
+  background-color: #00796b;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 25px;
+  margin-top: 50px;
+  margin-left: 350px;
+}
 .inputcreate{
   color: #ffffff;
 }
+.none{
+  display: none;
+}
+.newBut.upsize {
+  background-color: red;
+}
+
 @media (max-width:1030px){
   .nn{
     margin-left: 170px;

@@ -4,12 +4,13 @@
 <ul class="nn">
   {{#each todo}}
   <form action="/delete" method="post">
-  <li class="todo">
+  <li class="todo ">
     
-    <div>
-    <span>{{Ukwords}}</span>
+    <div class="newBut ">
+    <span class="lis">{{Ukwords}}</span>
     <span>{{Uawords}}</span>
-    <input type="checkbox" checked>
+    <span class="none">{{_id}}</span>
+    
      </div>
       {{!-- <button class="btn waves-effect waves-light vidst " type="submit" name="del">Del</button> --}}
        
