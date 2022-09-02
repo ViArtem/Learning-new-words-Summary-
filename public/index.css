@@ -154,7 +154,10 @@ body {
 .newBut.upsize {
   background-color: red;
 }
-
+.main-page-p{
+  color: #ffffff;
+  font-size: 20px;
+}
 @media (max-width:1030px){
   .nn{
     margin-left: 170px;
