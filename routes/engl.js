@@ -93,13 +93,7 @@ router.post('/verify',async (req, res)=>{
        
     }
 
-//     const words = new Word({
-//         Ukwords: req.body.reply,
-       
-//     })
-   
-//    await words.save()
-//     res.redirect('/home')
+
 })
 
 router.post('/delete', async(req, res)=>{
