@@ -28,14 +28,18 @@ router.get('/create', (req, res)=>{
     })
 })
 router.get('/volume', (req, res)=>{
-    res.render('volume')
+    res.render('volume',{
+        title:"Прослуховуєм"
+    })
 })
 
 router.get('/home', async(req, res)=>{
  
      const words = await Word.aggregate([{ $sample: { size: 1 } }])    //  .find({}).lean()
-     let l = warr.includes(words[0].Ukwords )
-     const todoss = await Word.find({}).lean()
+     
+     try {
+        let l = warr.includes(words[0].Ukwords )
+        const todoss = await Word.find({}).lean()
      if (todoss.length == warr.length) {
         
         warr.splice(1, warr.length);
@@ -52,6 +56,11 @@ router.get('/home', async(req, res)=>{
         words
         
     })
+     } catch (error) {
+        res.send(`<h1>Добавте слова в словник</h1>`)
+        console.log(error);
+     }
+     
    
 })
 
